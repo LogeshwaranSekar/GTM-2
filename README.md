@@ -1,27 +1,131 @@
-# IMPORTANT — Confidentiality Notice
+---
+name: 'Exercise: Data Analytics Assignment - PL 3 month data'
+about: Data Analytics Assignment for PL Oct 24 to Dec 24
+title: assignment-instructions
+labels: ''
+assignees: ''
 
-This repository and all its contents (including data, schema, documentation, and business context) are confidential and proprietary.
+# Data Analyst Assignment
 
-The material provided is strictly for the purpose of completing this assessment.
-You may not copy, distribute, publish, share, or reuse any part of this repository or dataset outside this assignment.
+Subscription & Revenue Analysis (Time Budget: 3–4 Hours)
 
-All rights are reserved by the company.
+---
 
-By accessing this repository, you agree to keep all contents confidential.
-Please find the detailed terms [here](./LICENSE.md)
+## Dataset Overview
 
-## Objective
+The dump contains three tables:
 
-You are provided with a MySQL database dump containing a subset of our subscription data.
+### 1. `contracts`
+Represents subscriptions.
 
-The goal of this assignment is to analyze the dataset and generate insights that could help the business understand:
+Key fields:
+- `created_at` — Subscription start date
+- `terminated_at` — Subscription end date (if churned)
+- `state` — Current status
+- `product_identifier` — Product/service name
+- `payment_provider_config_profile_id` — Pricing/billing configuration
+- `billing_histories_count` — Cached billing attempts count
+- `billing_histories_sum_in_euro_cents` — Cached total billed amount
 
-- Subscription performance
-- Revenue trends
-- Retention and churn
-- Billing reliability
-- Marketing effectiveness
+---
 
-We are evaluating analytical thinking, SQL skills, and business understanding — not design or tooling preference. Feel free to reach out if you have any questions.
+### 2. `contract_sign_up_details`
+Marketing and device metadata.
 
-The full details of this assignment are provided in the issue.
+Examples:
+- `referrer`
+- `campaign_id`
+- `publisher_id`
+- `device`
+- `os_family`
+- `remote_ip`
+
+---
+
+### 3. `billing_histories`
+Represents individual billing attempts.
+
+Key fields:
+- `created_at`
+- `status` (success, failure, etc.)
+- `amount_in_euro_cents`
+- `product_identifier`
+
+---
+
+## Required Analysis
+
+Please cover the following:
+
+### 1. Subscription Overview
+- Total subscriptions
+- Subscriptions per product
+- Signup trend over time
+- Subscriptions grouped by campaign, OS family, and publisher (placement)
+
+### 2. Revenue Analysis
+- Total revenue (based on successful billing attempts)
+- Revenue per product
+- Revenue trend over time
+- Average revenue per subscription
+- Revenue grouped by campaign and publisher
+
+### 3. Billing Performance
+- Total billing attempts
+- Success vs failure rate
+- Success rate per product
+- Success rate by campaign or publisher (if meaningful)
+
+### 4. Retention and Churn
+- Churn rate
+- Average subscription lifetime
+- Basic cohort analysis (by signup month)
+- Retention comparison:
+  - By campaign
+  - By OS family
+  - By publisher (placement)
+
+### 5. Marketing Effectiveness (Using `contract_sign_up_details`)
+Using campaign, publisher, and device data:
+
+- Compare campaigns by:
+  - Number of subscriptions
+  - Revenue generated
+  - Retention performance
+
+- Compare OS families by:
+  - Subscription volume
+  - Retention
+  - Revenue contribution
+
+- Compare publishers (placements) by:
+  - Subscription volume
+  - Revenue
+  - Retention quality
+
+Based on your analysis, identify:
+- High-performing campaigns
+- High-quality placements (publishers)
+- Segments that generate strong retention and revenue
+- Segments that may be low quality or risky
+
+---
+
+Focus on identifying which acquisition sources and user segments are most beneficial for the business, not just which generate the most signups.
+
+---
+
+## Deliverables
+
+
+1. SQL queries used
+2. Scripts (Python, panda, R, etc) used for data processing and analytics
+3. A short written report (Markdown or PDF)
+4. Relevant charts or visualizations where suitable
+5. Clear business insights and recommendations
+
+You may use any tools (SQL, Excel, Python, R, BI tools, etc.).
+
+
+---
+
